@@ -133,6 +133,11 @@ const HomePage = () => {
                 </div>
                 <div className='text-xl font-medium self-start'>- Rs. {data.price}</div>
               </div>
+              <div className='hidden'>
+                <img src='/icon.png' alt='i' />
+                <img src='/sadapay.png' alt='i' />
+                <img src='/logo.png' alt='i' />
+              </div>
             </div>
           );
         })}
