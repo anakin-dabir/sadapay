@@ -1,16 +1,10 @@
 import {useState} from 'react';
 import SendPage from './SendPage';
 
-const data = [
-  {name: 'ZUBAIR AZIZ ', time: '8:25 AM', price: '420'},
-  {name: 'SARFRAZ ALI', time: '8:25 AM', price: '420'},
-  {name: 'Ghulam Murtaza', time: '8:25 AM', price: '1280'},
-  {name: 'Esa Ul Haq', time: '8:25 AM', price: '400'},
-  {name: 'Danish Masood', time: '8:25 AM', price: '360'},
-  {name: 'Esrar Ul Haq', time: '8:25 AM', price: '300'},
-];
-
 const HomePage = () => {
+  const [homePageData, setHomePageData] = useState([
+    {name: 'Hammad Ahmed', time: '8:25 AM', price: '420'},
+  ]);
   const [money, setMoney] = useState(localStorage.getItem('money') || '1280');
   console.log();
   const [pageState, setPageState] = useState('HomePage');
@@ -119,7 +113,7 @@ const HomePage = () => {
 
       <div className='bg-white mt-4 max-w-[460px] mx-auto  rounded-3xl flex flex-col gap-7 p-5'>
         <div className='text-3xl font-medium'>Today</div>
-        {data.map((data, i) => {
+        {homePageData.map((data, i) => {
           return (
             <div key={i} className='flex flex-col gap-1'>
               <div className='flex justify-between'>

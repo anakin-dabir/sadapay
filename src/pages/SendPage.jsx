@@ -149,7 +149,7 @@ const SendPage = ({money, setMoney, pageState, setPageState}) => {
             Request
           </button>
           <button
-            disabled={!state.length}
+            disabled={!state.length || Number(state) > Number(money)}
             onClick={() => setPageState('DetailPage')}
             className={`h-16 w-1/2 disabled:bg-black/40 bg-black rounded-xl box-center text-white font-bold text-[17px]`}
           >
@@ -159,7 +159,13 @@ const SendPage = ({money, setMoney, pageState, setPageState}) => {
       </div>
     </div>
   ) : (
-    <DetailPage selectedPrice={state} pageState={pageState} setPageState={setPageState} />
+    <DetailPage
+      selectedPrice={state}
+      setMoney={setMoney}
+      money={money}
+      pageState={pageState}
+      setPageState={setPageState}
+    />
   );
 };
 

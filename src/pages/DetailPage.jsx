@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import BackBtn from '../components/BackBtn';
 import Receipt from './Receipt';
 
-const DetailPage = ({selectedPrice, pageState, setPageState}) => {
+const DetailPage = ({selectedPrice, money, setMoney, pageState, setPageState}) => {
   const initialData = {number: '', bank: '', name: ''};
   const [details, setDetails] = useState(initialData);
 
@@ -39,7 +39,12 @@ const DetailPage = ({selectedPrice, pageState, setPageState}) => {
       </div>
       <button
         disabled={!details.bank || !details.name || !details.number}
-        onClick={() => setPageState('Loading')}
+        onClick={() => {
+          const newMoney = (Number(money) - Number(selectedPrice)).toString();
+          localStorage.setItem('money', newMoney);
+          setMoney(newMoney);
+          setPageState('Loading');
+        }}
         className={`h-14 mt-auto bg-primary rounded-xl box-center text-white font-bold text-[17px]`}
       >
         Send Rs. {selectedPrice}
