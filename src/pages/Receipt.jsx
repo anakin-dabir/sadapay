@@ -117,14 +117,19 @@ const Receipt = ({details, selectedPrice, pageState, setPageState}) => {
       </button>
       <div className='w-[90%] mt-20 rounded-3xl relative shadow-newShadow mx-auto flex justify-center bg-white'>
         <div className='absolute -top-12 bg-primary h-24 w-24 rounded-full box-center p-5'>
-          <svg viewBox='0 -0.5 25 25' fill='none' xmlns='http://www.w3.org/2000/svg'>
+          <svg
+            viewBox='0 -0.5 25 25'
+            fill='none'
+            className='h-24 w-24'
+            xmlns='http://www.w3.org/2000/svg'
+          >
             <g id='SVGRepo_bgCarrier' strokeWidth='0'></g>
             <g id='SVGRepo_tracerCarrier' strokeLinecap='round' strokeLinejoin='round'></g>
             <g id='SVGRepo_iconCarrier'>
               <path
                 d='M5.5 12.5L10.167 17L19.5 8'
                 stroke='#ffff'
-                strokeWidth='2'
+                strokeWidth='2.5'
                 strokeLinecap='round'
                 strokeLinejoin='round'
               ></path>
@@ -132,8 +137,8 @@ const Receipt = ({details, selectedPrice, pageState, setPageState}) => {
           </svg>
         </div>
         <div className='flex flex-col mt-[3rem] w-full px-3 pt-6 pb-2'>
-          <div className='text-3xl self-center font-bold'>Rs. {selectedPrice}</div>
-          <div className='font-medium text-center px-4 mt-1 text-[16px]'>
+          <div className='text-4xl self-center font-bold'>Rs. {selectedPrice}</div>
+          <div className='font-medium text-center px-4 mt-1 text-lg'>
             <span>Danish Masood</span>
             <span className='font-normal text-black/60'> to </span>
             <span className='block -mt-1'>{details.name.toUpperCase()}</span>
