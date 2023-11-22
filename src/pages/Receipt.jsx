@@ -13,8 +13,16 @@ const Receipt = ({details, selectedPrice, pageState, setPageState}) => {
   }, []);
 
   const handleShare = async () => {
-    // Capture the current page as an image
-    const canvas = await html2canvas(document.body);
+    const elementToCapture = document.getElementById('captureElement');
+
+    const idsToExclude = ['exclude-btn1', 'exclude-btn2'];
+
+    const elementsToExclude = idsToExclude.map(id => `#${id}`).join(',');
+    const elementsToInclude = `#${elementToCapture.id} :not(${elementsToExclude})`;
+
+    const canvas = await html2canvas(elementToCapture, {
+      ignoreElements: element => (element.matches(elementsToExclude) ? true : false),
+    });
 
     // Convert the canvas to a data URL
     const imageDataUrl = canvas.toDataURL('image/png');
@@ -30,7 +38,6 @@ const Receipt = ({details, selectedPrice, pageState, setPageState}) => {
         .then(() => console.log('Shared successfully'))
         .catch(error => console.error('Error sharing:', error));
     } else {
-      // Fallback for browsers that do not support the Web Share API
       alert('Web Share API not supported on this browser');
     }
   };
@@ -94,11 +101,12 @@ const Receipt = ({details, selectedPrice, pageState, setPageState}) => {
   return pageState === 'Loading' ? (
     <Loader />
   ) : (
-    <div className='bg-background canva h-screen relative w-screen px-3 py-4 flex flex-col'>
+    <div id='canva' className='bg-background h-screen relative w-screen px-3 py-4 flex flex-col'>
       <div className='h-10 w-32 mx-auto'>
         <img src='/sadapay.jpg' alt='sadapay' />
       </div>
       <button
+        id='exclude-btn1'
         onClick={handleShare}
         className='absolute right-4 h-8 box-center text-primary font-medium'
       >
@@ -147,6 +155,7 @@ const Receipt = ({details, selectedPrice, pageState, setPageState}) => {
       </div>
 
       <button
+        id='exclude-btn2'
         onClick={() => setPageState('HomePage')}
         className={`h-14 mt-auto mb-10 bg-primary rounded-xl box-center text-white font-bold text-[17px]`}
       >
