@@ -103,7 +103,7 @@ const Receipt = ({details, selectedPrice, pageState, setPageState}) => {
   ) : (
     <div id='canva' className='bg-background h-screen relative w-screen px-3 py-4 flex flex-col'>
       <div className='h-10 w-32 mx-auto'>
-        <img src='/sadapay.jpg' alt='sadapay' />
+        <img src='/sadapay.png' alt='sadapay' />
       </div>
       <button
         id='exclude-btn1'

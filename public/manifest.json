@@ -3,19 +3,19 @@
   "name": "Sadapay",
   "icons": [
     {
-      "src": "sadapay.png",
+      "src": "logo.png",
       "type": "image/png",
       "sizes": "192x192"
+    },
+    {
+      "src": "sadapay.png",
+      "type": "image/png",
+      "sizes": "512x512"
     },
     {
       "src": "icon.png",
       "type": "image/png",
       "sizes": "32x132"
-    },
-    {
-      "src": "sadapay.jpg",
-      "type": "any",
-      "sizes": "512x512"
     },
     {
       "src": "ms.png",
