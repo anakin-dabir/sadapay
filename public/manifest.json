@@ -3,25 +3,26 @@
   "name": "Sadapay",
   "icons": [
     {
-      "src": "icon.png",
-      "type": "image/png",
-      "sizes": "32x132"
-    },
-    {
-      "src": "ms.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
       "src": "sadapay.png",
       "type": "image/png",
       "sizes": "192x192"
+    },
+    {
+      "src": "icon.png",
+      "type": "image/png",
+      "sizes": "32x132"
     },
     {
       "src": "sadapay.jpg",
       "type": "any",
       "sizes": "512x512"
     },
+    {
+      "src": "ms.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+
     {
       "src": "mastercard.png",
       "type": "image/png",
