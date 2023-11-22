@@ -2,9 +2,56 @@ import React, {useEffect} from 'react';
 import Loader from '../components/Loader';
 import html2canvas from 'html2canvas';
 
-const Receipt = ({details, selectedPrice, pageState, setPageState}) => {
+const Receipt = ({setHomePageData, details, selectedPrice, pageState, setPageState}) => {
+  const formatDate = (type = 1) => {
+    const date = new Date();
+    const monthNames = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let period = 'AM';
+
+    if (minutes < 10) {
+      minutes = `0${minutes}`;
+    }
+
+    if (hours >= 12) {
+      period = 'PM';
+      hours -= 12;
+    }
+
+    if (hours === 0) {
+      hours = 12;
+    }
+    if (type == -1) {
+      return `${hours}:${minutes} ${period}`;
+    }
+
+    return `${date.getDate()} ${
+      monthNames[date.getMonth()]
+    } ${date.getFullYear()}, ${hours}:${minutes} ${period}`;
+  };
   useEffect(() => {
     const interval = setTimeout(() => {
+      setHomePageData(pre => {
+        localStorage.setItem(
+          'homepageData',
+          JSON.stringify([{name: details.name, time: formatDate(-1), price: selectedPrice}, ...pre])
+        );
+        return [{name: details.name, time: formatDate(-1), price: selectedPrice}, ...pre];
+      });
       setPageState('ReceiptPage');
     }, 2000);
     return () => {
@@ -61,43 +108,7 @@ const Receipt = ({details, selectedPrice, pageState, setPageState}) => {
     const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
     return randomNumber;
   }
-  const formatDate = () => {
-    const date = new Date();
-    const monthNames = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ];
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
-    let period = 'AM';
 
-    if (minutes < 10) {
-      minutes = `0${minutes}`;
-    }
-
-    if (hours >= 12) {
-      period = 'PM';
-      hours -= 12;
-    }
-
-    if (hours === 0) {
-      hours = 12;
-    }
-
-    return `${date.getDate()} ${
-      monthNames[date.getMonth()]
-    } ${date.getFullYear()}, ${hours}:${minutes} ${period}`;
-  };
   return pageState === 'Loading' ? (
     <Loader />
   ) : (

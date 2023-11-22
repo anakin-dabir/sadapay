@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import BackBtn from '../components/BackBtn';
 import DetailPage from './DetailPage';
 
-const SendPage = ({money, setMoney, pageState, setPageState}) => {
+const SendPage = ({money, setHomePageData, setMoney, pageState, setPageState}) => {
   const [state, setState] = useState('');
   const handleClick = e => {
     if (e.currentTarget.value !== '-1') {
@@ -164,6 +164,7 @@ const SendPage = ({money, setMoney, pageState, setPageState}) => {
       setMoney={setMoney}
       money={money}
       pageState={pageState}
+      setHomePageData={setHomePageData}
       setPageState={setPageState}
     />
   );

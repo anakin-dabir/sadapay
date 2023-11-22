@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import BackBtn from '../components/BackBtn';
 import Receipt from './Receipt';
 
-const DetailPage = ({selectedPrice, money, setMoney, pageState, setPageState}) => {
+const DetailPage = ({selectedPrice, setHomePageData, money, setMoney, pageState, setPageState}) => {
   const initialData = {number: '', bank: '', name: ''};
   const [details, setDetails] = useState(initialData);
 
@@ -53,6 +53,7 @@ const DetailPage = ({selectedPrice, money, setMoney, pageState, setPageState}) =
   ) : (
     <Receipt
       details={details}
+      setHomePageData={setHomePageData}
       selectedPrice={selectedPrice}
       pageState={pageState}
       setPageState={setPageState}

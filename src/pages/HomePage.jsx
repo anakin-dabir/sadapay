@@ -2,9 +2,11 @@ import {useState} from 'react';
 import SendPage from './SendPage';
 
 const HomePage = () => {
-  const [homePageData, setHomePageData] = useState([
-    {name: 'Hammad Ahmed', time: '8:25 AM', price: '420'},
-  ]);
+  const [homePageData, setHomePageData] = useState(
+    JSON.parse(localStorage.getItem('homepageData')) || [
+      {name: 'Hammad Ahmed', time: '8:25 AM', price: '420'},
+    ]
+  );
   const [money, setMoney] = useState(localStorage.getItem('money') || '1280');
   console.log();
   const [pageState, setPageState] = useState('HomePage');
@@ -139,7 +141,13 @@ const HomePage = () => {
       </div>
     </>
   ) : (
-    <SendPage money={money} setMoney={setMoney} pageState={pageState} setPageState={setPageState} />
+    <SendPage
+      money={money}
+      setHomePageData={setHomePageData}
+      setMoney={setMoney}
+      pageState={pageState}
+      setPageState={setPageState}
+    />
   );
 };
 
