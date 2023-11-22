@@ -7,7 +7,7 @@ const DetailPage = ({selectedPrice, pageState, setPageState}) => {
   const [details, setDetails] = useState(initialData);
 
   return pageState === 'DetailPage' ? (
-    <div className='bg-background h-screen w-screen relative p-3 flex flex-col justify-between'>
+    <div className='bg-background sm:container sm:mx-auto h-screen w-screen relative p-3 flex flex-col justify-between'>
       <BackBtn color='#000000' name='SendPage' setPageState={setPageState} />
       <div className='mt-16 flex flex-col'>
         <div className='text-3xl font-semibold'>Send Money</div>
