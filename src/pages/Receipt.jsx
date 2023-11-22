@@ -103,7 +103,7 @@ const Receipt = ({details, selectedPrice, pageState, setPageState}) => {
   ) : (
     <div
       id='canva'
-      className='bg-background sm:container sm:mx-auto h-screen !overflow-hidden relative w-screen px-3 py-4 flex flex-col'
+      className='bg-background max-w-[460px] mx-auto h-screen !overflow-hidden relative w-screen px-3 py-4 flex flex-col'
     >
       <div className='h-10 w-32 mx-auto'>
         <img src='/sadapay.png' alt='sadapay' />
@@ -140,7 +140,7 @@ const Receipt = ({details, selectedPrice, pageState, setPageState}) => {
           <div className='text-4xl self-center font-bold'>Rs. {selectedPrice}</div>
           <div className='font-medium text-center px-4 mt-1 text-lg'>
             <span>Danish Masood</span>
-            <span className='font-normal text-black/60'> to </span>
+            <span className='font-extralight text-black/80'> to </span>
             <span className='block -mt-1'>{details.name.toUpperCase()}</span>
           </div>
           <div className='flex flex-col gap-3 p-3 py-4'>

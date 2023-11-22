@@ -18,7 +18,7 @@ const SendPage = ({money, pageState, setPageState}) => {
   };
 
   return pageState === 'SendPage' ? (
-    <div className='bg-primary h-screen flex justify-between relative p-4 flex-col w-screen !overflow-hidden'>
+    <div className='bg-primary h-screen flex justify-between max-w-[460px] mx-auto relative p-4 flex-col w-screen !overflow-hidden'>
       <BackBtn name='HomePage' setPageState={setPageState} />
       <div className='flex items-center flex-col'>
         <div className='text-white/70 text-sm'>Current Balance</div>

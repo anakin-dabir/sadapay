@@ -18,10 +18,10 @@ const HomePage = () => {
   };
   return pageState === 'HomePage' ? (
     <>
-      <div className='flex-col p-4 sm:container sm:mx-auto h-[38%] w-screen'>
+      <div className='flex-col p-4 max-w-[460px] mx-auto h-[38%] w-screen'>
         <div className='w-full h-full'>
-          <div className='flex sm:flex-col h-full gap-3'>
-            <div className='bg-gradient-to-b from-secondaryMedium to-secondary w-[59%] sm:w-full rounded-xl'>
+          <div className='flex  h-full gap-3'>
+            <div className='bg-gradient-to-b from-secondaryMedium to-secondary w-[59%]  rounded-xl'>
               <div className='flex h-full justify-between flex-col p-4 pt-5'>
                 <div className='flex flex-col gap-1'>
                   <div className='text-[15px] text-background'>Current Balance</div>
@@ -58,7 +58,7 @@ const HomePage = () => {
                 </div>
               </div>
             </div>
-            <div className='flex flex-col justify-between gap-3 w-[41%] sm:w-full'>
+            <div className='flex flex-col justify-between gap-3 w-[41%]'>
               <div className='bg-gradient-to-b from-accentMedium to-accent h-1/2 rounded-xl'>
                 <div className='flex flex-col p-2 justify-between h-full'>
                   <svg
@@ -116,7 +116,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className='bg-white mt-4 sm:container sm:mx-auto sm:mt-40 rounded-3xl flex flex-col gap-7 p-5'>
+      <div className='bg-white mt-4 max-w-[460px] mx-auto  rounded-3xl flex flex-col gap-7 p-5'>
         <div className='text-3xl font-medium'>Today</div>
         {data.map((data, i) => {
           return (
