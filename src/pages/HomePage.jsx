@@ -116,7 +116,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className='bg-white mt-4 sm:mt-40 rounded-3xl flex flex-col gap-7 p-5'>
+      <div className='bg-white mt-4 sm:container sm:mx-auto sm:mt-40 rounded-3xl flex flex-col gap-7 p-5'>
         <div className='text-3xl font-medium'>Today</div>
         {data.map((data, i) => {
           return (
