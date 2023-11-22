@@ -165,7 +165,7 @@ const Receipt = ({details, selectedPrice, pageState, setPageState}) => {
       <button
         id='exclude-btn2'
         onClick={() => setPageState('HomePage')}
-        className={`h-14 mt-auto mb-10 bg-primary rounded-xl box-center text-white font-bold text-[17px]`}
+        className={`h-14 mt-auto bg-primary rounded-xl box-center text-white font-bold text-[17px]`}
       >
         Close
       </button>

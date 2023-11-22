@@ -40,7 +40,7 @@ const DetailPage = ({selectedPrice, pageState, setPageState}) => {
       <button
         disabled={!details.bank || !details.name || !details.number}
         onClick={() => setPageState('Loading')}
-        className={`h-14 mb-10 bg-primary rounded-xl box-center text-white font-bold text-[17px]`}
+        className={`h-14 mt-auto bg-primary rounded-xl box-center text-white font-bold text-[17px]`}
       >
         Send Rs. {selectedPrice}
       </button>

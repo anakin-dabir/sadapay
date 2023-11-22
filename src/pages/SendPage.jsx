@@ -135,7 +135,7 @@ const SendPage = ({money, pageState, setPageState}) => {
           </div>
         </div>
 
-        <div className='flex gap-2 mb-10 sm:container sm:mx-auto'>
+        <div className='flex gap-2 mt-auto mb-1 sm:container sm:mx-auto'>
           <button
             disabled={!state.length}
             className={`h-16 w-1/2 disabled:bg-black/40 bg-black rounded-xl box-center text-white font-bold text-[17px]`}
