@@ -9,9 +9,10 @@ const data = [
   {name: 'Danish Masood', time: '8:25 AM', price: '360'},
   {name: 'Esrar Ul Haq', time: '8:25 AM', price: '300'},
 ];
-const money = 1280;
 
 const HomePage = () => {
+  const [money, setMoney] = useState(localStorage.getItem('money') || '1280');
+  console.log();
   const [pageState, setPageState] = useState('HomePage');
   const sendMoney = () => {
     setPageState('SendPage');
@@ -144,7 +145,7 @@ const HomePage = () => {
       </div>
     </>
   ) : (
-    <SendPage money={money} pageState={pageState} setPageState={setPageState} />
+    <SendPage money={money} setMoney={setMoney} pageState={pageState} setPageState={setPageState} />
   );
 };
 

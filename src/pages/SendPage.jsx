@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import BackBtn from '../components/BackBtn';
 import DetailPage from './DetailPage';
 
-const SendPage = ({money, pageState, setPageState}) => {
+const SendPage = ({money, setMoney, pageState, setPageState}) => {
   const [state, setState] = useState('');
   const handleClick = e => {
     if (e.currentTarget.value !== '-1') {
@@ -138,6 +138,12 @@ const SendPage = ({money, pageState, setPageState}) => {
         <div className='flex gap-2 mt-auto mb-1 sm:container sm:mx-auto'>
           <button
             disabled={!state.length}
+            onClick={() => {
+              const newMoney = (Number(money) + Number(state)).toString();
+              localStorage.setItem('money', newMoney);
+              setMoney(newMoney);
+              setPageState('HomePage');
+            }}
             className={`h-16 w-1/2 disabled:bg-black/40 bg-black rounded-xl box-center text-white font-bold text-[17px]`}
           >
             Request
