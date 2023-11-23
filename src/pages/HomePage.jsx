@@ -1,12 +1,27 @@
 import SendPage from './SendPage';
 import useStore from '../Store';
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
+import {useEffect} from 'react';
 
 const HomePage = () => {
+  const location = useLocation();
   const _balance = useStore(state => state._balance);
   const _homepageHistory = useStore(state => state._homepageHistory);
   const _pageState = useStore(state => state._pageState);
   const _setPageState = useStore(state => state._setPageState);
+  const _setThemeColor = useStore(state => state._setThemeColor);
+
+  useEffect(() => {
+    const isValidPath = path => {
+      const regex = /^\/\d+$/;
+      return regex.test(path);
+    };
+    if (_pageState === 'SendPage' || isValidPath(location.pathname)) {
+      _setThemeColor('#FF7B66');
+    } else {
+      _setThemeColor('#F2F6F7');
+    }
+  }, [_pageState, location]);
 
   return _pageState === 'HomePage' ? (
     <>
@@ -118,8 +133,16 @@ const HomePage = () => {
             <Link to={`/${i}`} key={i} className='flex flex-col items-stretch gap-1'>
               <div className='flex justify-between'>
                 <div className='flex gap-3 items-center justify-center'>
-                  <div className='rounded-2xl bg-primary/10 h-11 w-11 items-center justify-center'>
-                    <img src='/ms.png' alt='ms' />
+                  <div
+                    className={`rounded-2xl ${
+                      data.type === 'sent' ? 'bg-primary/10' : 'bg-secondary/10'
+                    } h-11 w-11 items-center justify-center`}
+                  >
+                    {data.type === 'sent' ? (
+                      <img src='/ms.png' alt='ms' />
+                    ) : (
+                      <img src='/mr.png' alt='ms' />
+                    )}
                   </div>
                   <div className='flex items-start flex-col'>
                     <div className='text-lg font-medium'>{data.to}</div>

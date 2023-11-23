@@ -2,38 +2,17 @@ import React, {useEffect, useState} from 'react';
 import BackBtn from '../components/BackBtn';
 import DetailPage from './DetailPage';
 import useStore from '../Store';
-import {useLocation} from 'react-router-dom';
 
 const SendPage = () => {
-  const location = useLocation();
-  function setThemeColor(color) {
-    const metaThemeColor = document.querySelector('meta[name=theme-color]');
-    if (metaThemeColor) {
-      metaThemeColor.setAttribute('content', color);
-    } else {
-      const themeColor = document.createElement('meta');
-      themeColor.name = 'theme-color';
-      themeColor.content = color;
-      document.head.appendChild(themeColor);
-    }
-  }
-
   const _balance = useStore(state => state._balance);
   const _pageState = useStore(state => state._pageState);
   const _setPageState = useStore(state => state._setPageState);
   const _setMoney = useStore(state => state._setMoney);
   const _setBalance = useStore(state => state._setBalance);
-  useEffect(() => {
-    const isValidPath = path => {
-      const regex = /^\/\d+$/;
-      return regex.test(path);
-    };
-    if (_pageState === 'SendPage' || isValidPath(location.pathname)) {
-      setThemeColor('#FF7B66');
-    } else {
-      setThemeColor('#F2F6F7');
-    }
-  }, [_pageState]);
+  const _setHomepageHistory = useStore(state => state._setHomepageHistory);
+  const _generateRandomNumber = useStore(state => state._generateRandomNumber);
+  const _setTime = useStore(state => state._setTime);
+
   const [state, setState] = useState('');
   const handleClick = e => {
     if (e.currentTarget.value !== '-1') {
@@ -173,6 +152,17 @@ const SendPage = () => {
               onClick={() => {
                 const newMoney = (Number(_balance) + Number(state)).toString();
                 _setBalance(newMoney);
+                const receiverDetails = {
+                  to: 'Khalid Umar',
+                  number: '03048085844',
+                  bank: 'Sadapay',
+                  time: _setTime(),
+                  shortTime: _setTime(-1),
+                  reference: _generateRandomNumber(),
+                  type: 'received',
+                  money: state,
+                };
+                _setHomepageHistory(receiverDetails);
                 _setPageState('HomePage');
               }}
               className={`h-16 w-1/2 disabled:bg-black/40 bg-black rounded-xl box-center text-white font-bold text-[17px]`}

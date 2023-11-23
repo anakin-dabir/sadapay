@@ -8,53 +8,10 @@ const ConfirmPage = () => {
   const _setPageState = useStore(state => state._setPageState);
   const _setDetails = useStore(state => state._setDetails);
   const _senderDetails = useStore(state => state._senderDetails);
+  const _setTime = useStore(state => state._setTime);
+  const _generateRandomNumber = useStore(state => state._generateRandomNumber);
   const [state, setState] = useState({to: 'JAVAID IQBAL -', bank: 'Easypaisa'});
-  const formatDate = (type = 1) => {
-    const date = new Date();
-    const monthNames = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ];
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
-    let period = 'AM';
 
-    if (minutes < 10) {
-      minutes = `0${minutes}`;
-    }
-
-    if (hours >= 12) {
-      period = 'PM';
-      hours -= 12;
-    }
-
-    if (hours === 0) {
-      hours = 12;
-    }
-    if (type === -1) {
-      return `${hours}:${minutes} ${period}`;
-    }
-
-    return `${date.getDate()} ${
-      monthNames[date.getMonth()]
-    } ${date.getFullYear()}, ${hours}:${minutes} ${period}`;
-  };
-  function generateRandomNumber() {
-    const min = 100000;
-    const max = 999999;
-    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-    return randomNumber;
-  }
   return _pageState === 'ConfirmPage' ? (
     <>
       <div className='bg-background  max-w-[460px] mx-auto h-screen !overflow-hidden w-screen relative p-3 flex flex-col'>
@@ -97,7 +54,7 @@ const ConfirmPage = () => {
         <button
           id='exclude-btn2'
           onClick={() => {
-            _setDetails(state.to, state.bank, formatDate(), formatDate(-1), generateRandomNumber());
+            _setDetails(state.to, state.bank, _setTime(), _setTime(-1), _generateRandomNumber());
             _setPageState('Loading');
           }}
           className={`h-14 mt-auto bg-primary rounded-xl box-center text-white font-bold text-lg`}
