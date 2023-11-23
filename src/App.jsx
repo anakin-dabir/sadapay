@@ -1,11 +1,13 @@
+import HistoryPage from './pages/HistoryPage';
 import HomePage from './pages/HomePage';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 
 const routes = createBrowserRouter([
   {
-    path: '/*',
+    path: '/',
     element: <HomePage />,
   },
+  {path: '/:data', element: <HistoryPage />},
 ]);
 
 const App = () => {

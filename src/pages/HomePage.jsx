@@ -1,5 +1,6 @@
 import SendPage from './SendPage';
 import useStore from '../Store';
+import {Link} from 'react-router-dom';
 
 const HomePage = () => {
   const _balance = useStore(state => state._balance);
@@ -114,7 +115,7 @@ const HomePage = () => {
         <div className='text-3xl font-medium'>Today</div>
         {_homepageHistory.map((data, i) => {
           return (
-            <button key={i} className='flex flex-col items-stretch gap-1'>
+            <Link to={`/${i}`} key={i} className='flex flex-col items-stretch gap-1'>
               <div className='flex justify-between'>
                 <div className='flex gap-3 items-center justify-center'>
                   <div className='rounded-2xl bg-primary/10 h-11 w-11 items-center justify-center'>
@@ -132,7 +133,7 @@ const HomePage = () => {
                 <img src='/sadapay.png' alt='i' />
                 <img src='/logo.png' alt='i' />
               </div>
-            </button>
+            </Link>
           );
         })}
       </div>
