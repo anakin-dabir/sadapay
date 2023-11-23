@@ -25,7 +25,7 @@ const useStore = create(set => ({
       reference: '1LINK-500584',
     },
   ],
-  _senderDetails: JSON.parse(localStorage.getItem('_senderDetails')) || {
+  _senderDetails: {
     to: 'Javaid Iqbal -',
     number: '03094998057',
     bank: 'Easypaisa',
@@ -50,7 +50,11 @@ const useStore = create(set => ({
     })),
 
   _setHomepageHistory: senderDetails =>
-    set(state => ({_homepageHistory: [senderDetails, ...state._homepageHistory]})),
+    set(state => {
+      const homePageHistory = [senderDetails, ...state._homepageHistory];
+      localStorage.setItem('_homepageHistory', JSON.stringify(homePageHistory));
+      return {_homepageHistory: homePageHistory};
+    }),
 
   _pageState: 'HomePage',
   _setPageState: _pageState => set(state => ({_pageState})),

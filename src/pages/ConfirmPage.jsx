@@ -69,7 +69,7 @@ const ConfirmPage = () => {
               <input
                 value={state.to}
                 onChange={e => setState(pre => ({...pre, to: e.target.value}))}
-                className='font-semibold text-[20px] placeholder:text-black'
+                className='font-medium text-[20px] placeholder:text-black'
                 placeholder='JAVED IQBAL -'
               />
               <input
@@ -83,7 +83,7 @@ const ConfirmPage = () => {
           <div className='mt-7 rounded-2xl w-full bg-white flex flex-col shadow-newShadow p-5'>
             <div className='flex flex-col border-b border-b-black/10'>
               <div className='text-black/50 text-sm'>Recipient will get</div>
-              <div className='text-3xl font-semibold pb-2 mt-2'>Rs. {_senderDetails.money}</div>
+              <div className='text-2xl font-semibold pb-2 mt-2'>Rs. {_senderDetails.money}</div>
             </div>
             <div className='flex flex-col mt-3'>
               <div className='text-black/50 pl-1 text-sm'>Add a note</div>

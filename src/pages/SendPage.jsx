@@ -5,6 +5,17 @@ import {Helmet} from 'react-helmet';
 import useStore from '../Store';
 
 const SendPage = () => {
+  function setThemeColor(color) {
+    const metaThemeColor = document.querySelector('meta[name=theme-color]');
+    if (metaThemeColor) {
+      metaThemeColor.setAttribute('content', color);
+    } else {
+      const themeColor = document.createElement('meta');
+      themeColor.name = 'theme-color';
+      themeColor.content = color;
+      document.head.appendChild(themeColor);
+    }
+  }
   const _balance = useStore(state => state._balance);
   const _pageState = useStore(state => state._pageState);
   const _setPageState = useStore(state => state._setPageState);
@@ -24,7 +35,7 @@ const SendPage = () => {
       }
     }
   };
-
+  setThemeColor('#FF7B66');
   return _pageState === 'SendPage' ? (
     <>
       <Helmet>
