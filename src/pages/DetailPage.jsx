@@ -1,63 +1,64 @@
 import React, {useState} from 'react';
 import BackBtn from '../components/BackBtn';
-import Receipt from './Receipt';
+import ConfirmPage from './ConfirmPage';
+import useStore from '../Store';
 
-const DetailPage = ({selectedPrice, setHomePageData, money, setMoney, pageState, setPageState}) => {
-  const initialData = {number: '', bank: '', name: ''};
-  const [details, setDetails] = useState(initialData);
+const DetailPage = () => {
+  const _pageState = useStore(state => state._pageState);
+  const _setPageState = useStore(state => state._setPageState);
+  const _setNumber = useStore(state => state._setNumber);
+  const [details, setDetails] = useState('');
 
-  return pageState === 'DetailPage' ? (
+  return _pageState === 'DetailPage' ? (
     <div className='bg-background  max-w-[460px] mx-auto h-screen !overflow-hidden w-screen relative p-3 flex flex-col justify-between'>
-      <BackBtn color='#000000' name='SendPage' setPageState={setPageState} />
+      <BackBtn color='#000000' name='SendPage' />
       <div className='mt-16 flex flex-col'>
         <div className='text-3xl font-semibold'>Send Money</div>
         <div className='text-black/70 pl-1.5 mt-5'>Enter IBAN, account number</div>
         <input
-          value={details.number}
-          onChange={e => setDetails(pre => ({...pre, number: e.target.value}))}
+          value={details}
+          onChange={e => setDetails(e.target.value)}
           autoFocus
           type='text'
           placeholder='PK19SADA0000311XXXX'
-          className='mt-2 rounded-full h-10 px-3 text-black/70 border-black border'
+          className='mt-2 rounded-full h-10 px-3 text-black border-black border-2'
         />
-        <div className='text-black/70 pl-1.5 mt-5'>Enter Name</div>
-        <input
-          value={details.name}
-          onChange={e => setDetails(pre => ({...pre, name: e.target.value}))}
-          type='text'
-          placeholder='Name'
-          className='mt-2 rounded-full h-10 px-3 text-black/70 border-black border'
-        />
-        <div className='text-black/70 pl-1.5 mt-5'>Bank Name</div>
-        <input
-          value={details.bank}
-          onChange={e => setDetails(pre => ({...pre, bank: e.target.value}))}
-          type='text'
-          placeholder='Bank Name'
-          className='mt-2 rounded-full h-10 px-3 text-black/70 border-black border'
-        />
+        <button
+          onClick={() => {
+            _setNumber(details);
+            _setPageState('ConfirmPage');
+          }}
+          className={`mt-5 ${details.length === 0 ? 'hidden' : 'flex'}  items-center rounded-2xl`}
+        >
+          <div className='h-10 w-10 box-center rounded-full bg-primaryMedium/20'>
+            <svg
+              viewBox='0 0 24 24'
+              className='h-7 w-7'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <g id='SVGRepo_bgCarrier' strokeWidth='0'></g>
+              <g id='SVGRepo_tracerCarrier' strokeLinecap='round' strokeLinejoin='round'></g>
+              <g id='SVGRepo_iconCarrier'>
+                <path
+                  d='M5 9.00002V17M9.5 9.00002V17M14.5 9.00002V17M19 9.00002V17M3 18.6L3 19.4C3 19.9601 3 20.2401 3.10899 20.454C3.20487 20.6422 3.35785 20.7952 3.54601 20.891C3.75992 21 4.03995 21 4.6 21H19.4C19.9601 21 20.2401 21 20.454 20.891C20.6422 20.7952 20.7951 20.6422 20.891 20.454C21 20.2401 21 19.9601 21 19.4V18.6C21 18.04 21 17.7599 20.891 17.546C20.7951 17.3579 20.6422 17.2049 20.454 17.109C20.2401 17 19.9601 17 19.4 17H4.6C4.03995 17 3.75992 17 3.54601 17.109C3.35785 17.2049 3.20487 17.3579 3.10899 17.546C3 17.7599 3 18.04 3 18.6ZM11.6529 3.07715L4.25291 4.7216C3.80585 4.82094 3.58232 4.87062 3.41546 4.99082C3.26829 5.09685 3.15273 5.24092 3.08115 5.40759C3 5.59654 3 5.82553 3 6.28349L3 7.40002C3 7.96007 3 8.2401 3.10899 8.45401C3.20487 8.64217 3.35785 8.79515 3.54601 8.89103C3.75992 9.00002 4.03995 9.00002 4.6 9.00002H19.4C19.9601 9.00002 20.2401 9.00002 20.454 8.89103C20.6422 8.79515 20.7951 8.64217 20.891 8.45401C21 8.2401 21 7.96007 21 7.40002V6.2835C21 5.82553 21 5.59655 20.9188 5.40759C20.8473 5.24092 20.7317 5.09685 20.5845 4.99082C20.4177 4.87062 20.1942 4.82094 19.7471 4.7216L12.3471 3.07715C12.2176 3.04837 12.1528 3.03398 12.0874 3.02824C12.0292 3.02314 11.9708 3.02314 11.9126 3.02824C11.8472 3.03398 11.7824 3.04837 11.6529 3.07715Z'
+                  stroke='#F67E6D'
+                  strokeWidth='2'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                ></path>{' '}
+              </g>
+            </svg>
+          </div>
+          <div className='pl-4 flex flex-col text-start py-1'>
+            <div className='font-medium'>Select the bank</div>
+            <div className='text-black/50 text-[16px]'>Enter full account number & tap here</div>
+          </div>
+        </button>
       </div>
-      <button
-        disabled={!details.bank || !details.name || !details.number}
-        onClick={() => {
-          const newMoney = (Number(money) - Number(selectedPrice)).toString();
-          localStorage.setItem('money', newMoney);
-          setMoney(newMoney);
-          setPageState('Loading');
-        }}
-        className={`h-14 mt-auto bg-primary rounded-xl box-center text-white font-bold text-[17px]`}
-      >
-        Send Rs. {selectedPrice}
-      </button>
     </div>
   ) : (
-    <Receipt
-      details={details}
-      setHomePageData={setHomePageData}
-      selectedPrice={selectedPrice}
-      pageState={pageState}
-      setPageState={setPageState}
-    />
+    <ConfirmPage />
   );
 };
 

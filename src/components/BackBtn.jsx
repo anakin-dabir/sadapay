@@ -1,6 +1,9 @@
-const BackBtn = ({color = '#ffff', name, setPageState}) => {
+import useStore from '../Store';
+
+const BackBtn = ({color = '#ffff', name}) => {
+  const _setPageState = useStore(state => state._setPageState);
   const backPage = () => {
-    setPageState(name);
+    _setPageState(name);
   };
   return (
     <button onClick={backPage} className=' absolute -ml-[14px] w-10 h-10'>

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -18,7 +19,7 @@
 :root {
   color: #151515;
   background-color: #f2f6f7;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter';
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
