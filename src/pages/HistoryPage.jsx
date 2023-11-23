@@ -1,16 +1,12 @@
 import React from 'react';
 import BackBtn from '../components/BackBtn';
-import {Helmet} from 'react-helmet';
 
-const HistoryPage = ({setPageState}) => {
+const HistoryPage = () => {
   return (
     <>
-      <Helmet>
-        <meta name='theme-color' content='#FF7B66' />
-      </Helmet>
       <div className='bg-background  max-w-[460px] mx-auto h-screen !overflow-hidden relative w-screen flex flex-col'>
         <div className='bg-primary h-[55%] rounded-b-3xl p-3'>
-          <BackBtn name='SendPage' setPageState={setPageState} />
+          <BackBtn name='HomePage' />
           <div className='h-full flex flex-col justify-between'>
             <div className='justify-center text-white flex font-bold text-xl mt-1.5'>
               Money Sent

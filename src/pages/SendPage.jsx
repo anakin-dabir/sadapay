@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import BackBtn from '../components/BackBtn';
 import DetailPage from './DetailPage';
 import {Helmet} from 'react-helmet';
@@ -16,6 +16,14 @@ const SendPage = () => {
       document.head.appendChild(themeColor);
     }
   }
+  useEffect(() => {
+    if (_pageState === 'SendPage') {
+      setThemeColor('#FF7B66');
+    } else {
+      setThemeColor('#F2F6F7');
+    }
+  }, [_pageState]);
+
   const _balance = useStore(state => state._balance);
   const _pageState = useStore(state => state._pageState);
   const _setPageState = useStore(state => state._setPageState);
@@ -35,12 +43,9 @@ const SendPage = () => {
       }
     }
   };
-  setThemeColor('#FF7B66');
+
   return _pageState === 'SendPage' ? (
     <>
-      <Helmet>
-        <meta name='theme-color' content='#FF7B66' />
-      </Helmet>
       <div className='bg-primary h-screen flex justify-between max-w-[460px] mx-auto relative p-4 flex-col w-screen !overflow-hidden'>
         <BackBtn name='HomePage' />
         <div className='flex items-center flex-col'>
