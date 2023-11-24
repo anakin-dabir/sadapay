@@ -47,6 +47,11 @@ const Modal = () => {
           Continue
         </button>
       </div>
+      <div
+        className={`h-screen-w-screen ${
+          modalState && 'hidden'
+        } fixed top-0 bg-black/70 inset-0 z-8`}
+      ></div>
     </>
   );
 };

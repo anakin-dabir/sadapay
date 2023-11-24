@@ -32,7 +32,7 @@ const ConfirmPage = () => {
               <input
                 value={state.bank}
                 onChange={e => setState(pre => ({...pre, bank: e.target.value}))}
-                className='text-black/60 w-[80%]  text-[18px] placeholder:text-black/60'
+                className='text-black/60 w-[80%] text-sm placeholder:text-black/60'
                 placeholder='Easypaisa'
               />
             </div>

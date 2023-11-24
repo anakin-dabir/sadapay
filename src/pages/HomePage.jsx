@@ -1,6 +1,6 @@
 import SendPage from './SendPage';
 import useStore from '../Store';
-import {useLocation} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import {useEffect} from 'react';
 import History from './History';
 import Modal from '../components/Modal';
@@ -30,7 +30,10 @@ const HomePage = () => {
       <div className='flex-col p-4 max-w-[460px] mx-auto h-[38%] w-screen'>
         <div className='w-full h-full'>
           <div className='flex h-full gap-3'>
-            <button className='bg-gradient-to-b  from-secondaryMedium to-secondary w-[59%]  rounded-xl'>
+            <Link
+              to='cards'
+              className='bg-gradient-to-b  from-secondaryMedium to-secondary w-[59%]  rounded-xl'
+            >
               <div className='flex h-full self-start justify-between flex-col p-4 pt-5'>
                 <div className='flex flex-col items-start gap-1'>
                   <div className='text-[15px] text-background'>Current Balance</div>
@@ -66,9 +69,12 @@ const HomePage = () => {
                   </div>
                 </div>
               </div>
-            </button>
+            </Link>
             <div className='flex flex-col justify-between gap-3 w-[41%]'>
-              <div className='bg-gradient-to-b from-accentMedium to-accent h-1/2 rounded-xl'>
+              <Link
+                to='loadMoney'
+                className='bg-gradient-to-b from-accentMedium to-accent h-1/2 rounded-xl'
+              >
                 <div className='flex flex-col p-2 justify-between h-full'>
                   <svg
                     viewBox='0 0 24 24'
@@ -93,7 +99,7 @@ const HomePage = () => {
                     <div className='-mt-[4px]'>Money</div>
                   </div>
                 </div>
-              </div>
+              </Link>
               <button
                 onTouchStart={() => _setPageState('SendPage')}
                 className='bg-primaryMedium h-1/2 rounded-xl active:bg-primary'

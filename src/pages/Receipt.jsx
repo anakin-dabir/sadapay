@@ -2,7 +2,6 @@ import React, {useEffect, useRef, useState} from 'react';
 import Loader from '../components/Loader';
 import useStore from '../Store';
 import * as htmlToImage from 'html-to-image';
-import {toJpeg} from 'html-to-image';
 
 const Receipt = () => {
   const _pageState = useStore(state => state._pageState);
@@ -109,7 +108,7 @@ const Receipt = () => {
                 <span className='!font-normal text-black/80'> to </span>
                 <span className='block'>{_senderDetails.to.toUpperCase()}</span>
               </div>
-              <div className='flex flex-col gap-3 p-3 py-4'>
+              <div className='flex flex-col gap-3 p-3 pt-3 pb-4'>
                 <div className='flex flex-col gap-1'>
                   <div className='text-black/50 text-[15px]'>Date & Time (PKT)</div>
                   <div className=''>{_senderDetails.time}</div>
