@@ -5,10 +5,7 @@ import Cards from './pages/Cards';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 
 const routes = createBrowserRouter([
-  {
-    path: '/',
-    element: <HomePage />,
-  },
+  {path: '/', element: <HomePage />},
   {path: '/:reference', element: <HistoryPage />},
   {path: '/loadMoney', element: <LoadMoney />},
   {path: '/cards', element: <Cards />},

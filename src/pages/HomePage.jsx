@@ -31,7 +31,7 @@ const HomePage = () => {
         <div className='w-full h-full'>
           <div className='flex h-full gap-3'>
             <Link
-              to='cards'
+              to='/cards'
               className='bg-gradient-to-b  from-secondaryMedium to-secondary w-[59%]  rounded-xl'
             >
               <div className='flex h-full self-start justify-between flex-col p-4 pt-5'>
@@ -72,7 +72,7 @@ const HomePage = () => {
             </Link>
             <div className='flex flex-col justify-between gap-3 w-[41%]'>
               <Link
-                to='loadMoney'
+                to='/loadMoney'
                 className='bg-gradient-to-b from-accentMedium to-accent h-1/2 rounded-xl'
               >
                 <div className='flex flex-col p-2 justify-between h-full'>

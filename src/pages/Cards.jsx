@@ -11,7 +11,7 @@ const Cards = () => {
   return (
     <>
       <div className='bg-background h-screen flex max-w-[460px] mx-auto relative p-4 flex-col w-screen !overflow-hidden'>
-        <BackBtn name='HomePage' color='#000000' onTouchStart={backFunction} />
+        <BackBtn name='HomePage' color='#000000' onClick={backFunction} />
         <div className='flex items-center flex-col'>
           <div className='font-medium text-lg mt-1'>My Cards</div>
         </div>

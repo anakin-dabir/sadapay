@@ -12,7 +12,7 @@ const LoadMoney = () => {
   return (
     <>
       <div className='bg-background  max-w-[460px] mx-auto h-screen !overflow-hidden w-screen relative p-3 flex flex-col justify-between'>
-        <BackBtn color='#000000' onTouchStart={backFunction} />
+        <BackBtn color='#000000' onClick={backFunction} />
         <div className='mt-16 flex flex-col'>
           <div className='text-3xl font-semibold'>Load Money</div>
           <div className='text-black/50 mt-2'>

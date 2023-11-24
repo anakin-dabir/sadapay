@@ -26,7 +26,7 @@ const HistoryPage = () => {
             _homepageHistory.type === 'sent' ? 'bg-primary' : 'bg-secondary'
           } h-[55%] rounded-b-3xl p-3`}
         >
-          <BackBtn name='HomePage' onTouchStart={() => navigate(-1)} />
+          <BackBtn name='HomePage' onClick={() => navigate('/')} />
           <div className='h-full flex flex-col justify-between'>
             <div className='justify-center text-white flex font-bold text-xl mt-1.5'>
               Money Sent
