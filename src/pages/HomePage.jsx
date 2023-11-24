@@ -1,12 +1,13 @@
 import SendPage from './SendPage';
 import useStore from '../Store';
-import {Link, useLocation} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
 import {useEffect} from 'react';
+import History from './History';
+import Modal from '../components/Modal';
 
 const HomePage = () => {
   const location = useLocation();
   const _balance = useStore(state => state._balance);
-  const _homepageHistory = useStore(state => state._homepageHistory);
   const _pageState = useStore(state => state._pageState);
   const _setPageState = useStore(state => state._setPageState);
   const _setThemeColor = useStore(state => state._setThemeColor);
@@ -25,6 +26,7 @@ const HomePage = () => {
 
   return _pageState === 'HomePage' ? (
     <>
+      <Modal />
       <div className='flex-col p-4 max-w-[460px] mx-auto h-[38%] w-screen'>
         <div className='w-full h-full'>
           <div className='flex h-full gap-3'>
@@ -125,41 +127,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-
-      <div className='bg-white mt-4 max-w-[460px] mx-auto  rounded-3xl flex flex-col gap-7 p-5'>
-        <div className='text-3xl font-medium'>Today</div>
-        {_homepageHistory.map((data, i) => {
-          return (
-            <Link to={`/${i}`} key={i} className='flex flex-col items-stretch gap-1'>
-              <div className='flex justify-between'>
-                <div className='flex gap-3 items-center justify-center'>
-                  <div
-                    className={`rounded-2xl ${
-                      data.type === 'sent' ? 'bg-primary/10' : 'bg-secondary/10'
-                    } h-11 w-11 items-center justify-center`}
-                  >
-                    {data.type === 'sent' ? (
-                      <img src='/ms.png' alt='ms' />
-                    ) : (
-                      <img src='/mr.png' alt='ms' />
-                    )}
-                  </div>
-                  <div className='flex items-start flex-col'>
-                    <div className='text-lg font-medium'>{data.to}</div>
-                    <div className='text-black/50'>{data.shortTime}</div>
-                  </div>
-                </div>
-                <div className='text-lg self-center font-medium'>- Rs. {data.money}</div>
-              </div>
-              <div className='hidden'>
-                <img src='/icon.png' alt='i' />
-                <img src='/sadapay.png' alt='i' />
-                <img src='/logo.png' alt='i' />
-              </div>
-            </Link>
-          );
-        })}
-      </div>
+      <History />
     </>
   ) : (
     <SendPage />

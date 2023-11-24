@@ -1,7 +1,10 @@
 import {create} from 'zustand';
 
 const useStore = create(set => ({
-  _user: JSON.parse(localStorage.getItem('_user')) || {name: 'Danish Masood', number: '3039525070'},
+  _user: JSON.parse(localStorage.getItem('_user')) || {
+    name: 'Sadiq Basheer',
+    number: '03005014345',
+  },
   _setUser: _user =>
     set(state => {
       localStorage.setItem('_user', JSON.stringify(_user));
@@ -16,10 +19,10 @@ const useStore = create(set => ({
 
   _homepageHistory: JSON.parse(localStorage.getItem('_homepageHistory')) || [
     {
-      to: 'Javaid Iqbal -',
-      number: '03094998057',
-      bank: 'Easypaisa',
-      money: '300',
+      to: 'SALEEM KHAN',
+      number: '03008790890',
+      bank: 'SadaPay',
+      money: '880',
       time: '22 November 2023, 6:09 AM',
       shortTime: '6:09 AM',
       reference: '1LINK-500584',
@@ -27,10 +30,10 @@ const useStore = create(set => ({
     },
   ],
   _senderDetails: {
-    to: 'Javaid Iqbal -',
-    number: '03094998057',
-    bank: 'Easypaisa',
-    money: '300',
+    to: 'SALEEM KHAN',
+    number: '03008790890',
+    bank: 'SadaPay',
+    money: '880',
     time: '22 November 2023, 6:09 AM',
     shortTime: '6:09 AM',
     reference: '1LINK-500584',
@@ -101,6 +104,10 @@ const useStore = create(set => ({
       return `${hours}:${minutes} ${period}`;
     }
 
+    if (type === -2) {
+      return `${date.getDate()} ${monthNames[date.getMonth()]}`;
+    }
+
     return `${date.getDate()} ${
       monthNames[date.getMonth()]
     } ${date.getFullYear()}, ${hours}:${minutes} ${period}`;
@@ -115,6 +122,35 @@ const useStore = create(set => ({
       themeColor.content = color;
       document.head.appendChild(themeColor);
     }
+  },
+  _groupByDateAndMonth: data => {
+    return data.reduce((result, item) => {
+      const [date, month] = item.time.split(', ')[0].split(' ');
+      const dateMonthKey = `${date} ${month}`;
+
+      if (!result[dateMonthKey]) {
+        result[dateMonthKey] = {
+          items: [],
+          totalMoney: 0,
+          totalMoneySign: '',
+        };
+      }
+
+      result[dateMonthKey].items.push(item);
+      if (item.type === 'sent') {
+        result[dateMonthKey].totalMoney -= parseFloat(item.money);
+      } else {
+        result[dateMonthKey].totalMoney += parseFloat(item.money);
+      }
+
+      result[dateMonthKey].totalMoneySign = result[dateMonthKey].totalMoney >= 0 ? '+' : '-';
+      return result;
+    }, {});
+  },
+  _formattedDate: datee => {
+    const [date, month] = datee.split(' ');
+    const newMonth = month.slice(0, 3);
+    return `${newMonth} ${date}`;
   },
 }));
 

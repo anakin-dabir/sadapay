@@ -3,6 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@-o-viewport {
+  viewport-fit: contain;
+}
+@-ms-viewport {
+  viewport-fit: contain;
+}
 * {
   margin: 0;
   padding: 0;

@@ -5,7 +5,12 @@
     <link rel="icon" type="image/svg+xml" href="/icon.png" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no"
+      content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, shrink-to-fit=no, viewport-fit=contain, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent, viewport-fit=contain, shrink-to-fit=no"
     />
     <meta name="theme-color" content="#F2F6F7" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
@@ -13,6 +18,7 @@
   </head>
   <body>
     <div id="root"></div>
+    <div id="modal"></div>
   </body>
   <script type="text/javaScript">
     if ('serviceWorker' in navigator) {

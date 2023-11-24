@@ -7,7 +7,7 @@ const routes = createBrowserRouter([
     path: '/',
     element: <HomePage />,
   },
-  {path: '/:data', element: <HistoryPage />},
+  {path: '/:reference', element: <HistoryPage />},
 ]);
 
 const App = () => {

@@ -172,6 +172,8 @@ const SendPage = () => {
             <button
               disabled={!state.length || Number(state) > Number(_balance)}
               onClick={() => {
+                const newMoney = (Number(_balance) - Number(state)).toString();
+                _setBalance(newMoney);
                 _setMoney(state);
                 _setPageState('DetailPage');
               }}

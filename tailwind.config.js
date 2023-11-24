@@ -20,6 +20,7 @@ export default {
       },
       boxShadow: {
         newShadow: '0px 0px 16px 0px rgba(0,0,0,0.2)',
+        anotherShadow: ' 0px 0px 16px 0px rgba(107,106,107,0.1);',
       },
     },
   },
