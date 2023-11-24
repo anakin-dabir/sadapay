@@ -18,35 +18,39 @@ const ConfirmPage = () => {
         <BackBtn color='#000000' name='SendPage' />
         <div className='justify-center flex font-bold text-xl mt-1.5'>Confirm</div>
         <div className='mt-6 flex-col flex'>
-          <div className='h-20 bg-white w-full rounded-2xl items-center shadow-newShadow p-5 flex'>
-            <div className='h-11 w-11 bg-black rounded-full'>
-              <img src='/ms.png' />
+          <div className=' bg-white w-full rounded-2xl items-center shadow-newShadow gap-4 box-border p-5 flex'>
+            <div className='h-11 w-14 border border-black/10 box-center rounded-full'>
+              <img src='/icon.png' />
             </div>
-            <div className='flex flex-col pl-4 line-y-[-2px]'>
+            <div className='flex w-full flex-col -space-y-1'>
               <input
                 value={state.to}
                 onChange={e => setState(pre => ({...pre, to: e.target.value}))}
-                className='font-medium text-[20px] placeholder:text-black'
+                className='font-medium text-md  w-[80%]   placeholder:text-black'
                 placeholder='JAVED IQBAL -'
               />
               <input
                 value={state.bank}
                 onChange={e => setState(pre => ({...pre, bank: e.target.value}))}
-                className='text-black/60 text-[18px] placeholder:text-black/60'
+                className='text-black/60 w-[80%]  text-[18px] placeholder:text-black/60'
                 placeholder='Easypaisa'
               />
             </div>
           </div>
           <div className='mt-7 rounded-2xl w-full bg-white flex flex-col shadow-newShadow p-5'>
             <div className='flex flex-col border-b border-b-black/10'>
-              <div className='text-black/50 text-sm'>Recipient will get</div>
+              <div className='text-black/50 font-light text-sm'>Recipient will get</div>
               <div className='text-2xl font-semibold pb-2 mt-2'>Rs. {_senderDetails.money}</div>
             </div>
+            <div className='flex flex-col mt-3 border-b border-b-black/10'>
+              <div className='text-black/50 font-light text-sm'>Sender Fee</div>
+              <div className='font-medium text-secondary pb-2 mt-2'>Rs. 0</div>
+            </div>
             <div className='flex flex-col mt-3'>
-              <div className='text-black/50 pl-1 text-sm'>Add a note</div>
+              <div className='text-black/50 font-light pl-1 text-sm'>Add a note</div>
               <textarea
                 placeholder="e.g. today's lunch"
-                className='placeholder:text-black/50 mt-1 pb-2 border rounded-2xl p-4 h-20 border-black/10'
+                className='placeholder:text-black/50 placeholder:font-light mt-1 pb-2 border rounded-2xl p-4 h-20 border-black/10'
               />
             </div>
           </div>
@@ -57,7 +61,7 @@ const ConfirmPage = () => {
             _setDetails(state.to, state.bank, _setTime(), _setTime(-1), _generateRandomNumber());
             _setPageState('Loading');
           }}
-          className={`h-14 mt-auto bg-primary rounded-xl box-center text-white font-bold text-lg`}
+          className={`h-14 mb-3 mt-auto bg-primary rounded-xl box-center text-white font-bold text-lg`}
         >
           Send Rs. {_senderDetails.money}
         </button>

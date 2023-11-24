@@ -34,7 +34,6 @@ const Receipt = () => {
     } else {
       // Fallback for browsers that don't support Web Share API
       console.log('Web Share API is not supported.');
-
       // Detect platform and use platform-specific sharing approach
       if (navigator.userAgent.match(/Android/i)) {
         // Use Android intent URL scheme
@@ -133,7 +132,7 @@ const Receipt = () => {
         <button
           id='exclude-btn2'
           onClick={() => _setPageState('HomePage')}
-          className={`h-14 mx-5 mt-auto bg-primary flex px-5 !justify-between items-center rounded-xl box-center text-white font-bold text-lg`}
+          className={`h-14 mx-5 mb-2 mt-auto bg-primary flex px-5 !justify-between items-center rounded-xl box-center text-white font-bold text-lg`}
         >
           <div>Close</div>
           <div className='h-8 w-8'>

@@ -16,7 +16,8 @@ const SendPage = () => {
   const [state, setState] = useState('');
   const handleClick = e => {
     if (e.currentTarget.value !== '-1') {
-      if (state.length === 0 && e.currentTarget.value === 0) {
+      if (state.length === 0 && e.currentTarget.value === '0') {
+        console.log('hi');
         return;
       }
       setState(pre => pre + e.target.value);
@@ -146,7 +147,7 @@ const SendPage = () => {
             </div>
           </div>
 
-          <div className='flex gap-2 mt-auto mb-1 sm:container sm:mx-auto'>
+          <div className='flex gap-2 mt-auto mb-3'>
             <button
               disabled={!state.length}
               onClick={() => {

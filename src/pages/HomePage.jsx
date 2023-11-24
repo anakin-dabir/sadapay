@@ -98,7 +98,7 @@ const HomePage = () => {
                 onTouchStart={() => _setPageState('SendPage')}
                 className='bg-primaryMedium h-1/2 rounded-xl active:bg-primary'
               >
-                <div className='flex flex-col p-2 justify-between h-full'>
+                <div className='flex self-start flex-col p-2 justify-between h-full'>
                   <svg
                     viewBox='0 0 24 24'
                     className='h-8 w-8 self-end'
@@ -117,7 +117,7 @@ const HomePage = () => {
                       ></path>
                     </g>
                   </svg>
-                  <div className='flex flex-col text-xl pl-2 pb-2 font-medium text-white'>
+                  <div className='flex flex-col text-start text-xl pl-2 pb-2 font-medium text-white'>
                     <div>Send &</div>
                     <div className='-mt-[6px]'>Request</div>
                   </div>
