@@ -71,7 +71,7 @@ const Receipt = () => {
         Share
       </button>
       <div className='bg-background max-w-[460px] mx-auto h-screen !overflow-hidden relative w-screen pt-2 pb-5 flex flex-col'>
-        <div ref={ref} className='bg-background px-4 pt-3 pb-8'>
+        <div ref={ref} className='bg-background  pt-3 pb-8'>
           <div className='h-10 w-32 mx-auto'>
             <img src='/sadapay.png' alt='sadapay' />
           </div>
