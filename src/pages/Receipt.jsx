@@ -13,14 +13,39 @@ const Receipt = () => {
   const _generateRandomNumber = useStore(state => state._generateRandomNumber);
   const ref = useRef(null);
 
-  const captureImage = () => {
+  const captureImage = async () => {
     const name = _generateRandomNumber();
-    htmlToImage.toJpeg(ref.current, {quality: 0.95}).then(dataUrl => {
-      var link = document.createElement('a');
-      link.download = `${name}.jpeg`;
-      link.href = dataUrl;
-      link.click();
-    });
+    const dataUrl = await htmlToImage.toJpeg(ref.current, {quality: 0.95});
+    var link = document.createElement('a');
+    link.download = `${name}.jpeg`;
+    link.href = dataUrl;
+    link.click();
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Shared Image',
+          text: 'Check out this image!',
+          url: dataUrl,
+        });
+        console.log('Shared successfully');
+      } catch (error) {
+        console.error('Error sharing:', error);
+      }
+    } else {
+      // Fallback for browsers that don't support Web Share API
+      console.log('Web Share API is not supported.');
+
+      // Detect platform and use platform-specific sharing approach
+      if (navigator.userAgent.match(/Android/i)) {
+        // Use Android intent URL scheme
+        window.location.href = `intent:${encodeURIComponent(dataUrl)}#Intent;end`;
+      } else if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+        // Use iOS mailto URL scheme
+        window.location.href = `mailto:?subject=Shared Image&body=Check out this image: ${dataUrl}`;
+      } else {
+        console.log('Sharing not supported on this platform.');
+      }
+    }
   };
   const [shadow, setShadow] = useState(true);
 
@@ -48,7 +73,7 @@ const Receipt = () => {
         Share
       </button>
       <div className='bg-background max-w-[460px] mx-auto h-screen !overflow-hidden relative w-screen pt-2 pb-5 flex flex-col'>
-        <div ref={ref} className='bg-background px-5 pb-8'>
+        <div ref={ref} className='bg-background px-4 pt-3 pb-8'>
           <div className='h-10 w-32 mx-auto'>
             <img src='/sadapay.png' alt='sadapay' />
           </div>
@@ -80,7 +105,7 @@ const Receipt = () => {
             </div>
             <div className='flex flex-col mt-[3rem] w-full px-3 pt-6 pb-2'>
               <div className='text-4xl self-center font-bold'>Rs. {_senderDetails.money}</div>
-              <div className='font-medium text-center -space-y-2.5 px-4 mt-1 text-lg'>
+              <div className='font-medium text-center -space-y-2 px-4 mt-1 text-lg'>
                 <span>{_user.name}</span>
                 <span className='!font-normal text-black/80'> to </span>
                 <span className='block'>{_senderDetails.to.toUpperCase()}</span>
