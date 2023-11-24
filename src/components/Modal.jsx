@@ -12,7 +12,7 @@ const Modal = () => {
       <div
         className={`fixed rounded-t-3xl bottom-0 ${
           modalState ? 'translate-y-full' : ''
-        } p-4 pt-10 z-10 flex flex-col justify-between bg-white transition-transform ease-in-out shadow-newShadow w-screen`}
+        } p-4 pt-10 z-10 flex flex-col justify-between bg-white transition-transform ease-in-out shadow-newShadow max-w-[460px]`}
       >
         <div className='flex flex-col gap-6'>
           <div className='flex flex-col gap-1'>
