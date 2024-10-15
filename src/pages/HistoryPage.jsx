@@ -59,7 +59,7 @@ const HistoryPage = () => {
                     </span>
                   </div>
                 </div>
-                <div className='text-white/90 text-[18px]'>{_homepageHistory.time}</div>
+                <div className='text-white/90 text-[18px]'>{"15 October 2024, 2:45 PM"}</div>
               </div>
             </div>
           </div>
