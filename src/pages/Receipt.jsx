@@ -111,7 +111,7 @@ const Receipt = () => {
               <div className='flex flex-col gap-3 p-3 pt-3 pb-4'>
                 <div className='flex flex-col gap-1'>
                   <div className='text-black/50 text-[15px]'>Date & Time (PKT)</div>
-                  <div className=''>{_senderDetails.time}</div>
+                  <div className=''>{"15 October 2024, 2:45 PM"}</div>
                 </div>
                 <div className='flex flex-col  gap-1'>
                   <div className='text-black/50 text-[15px]'>Receiver's Account</div>
